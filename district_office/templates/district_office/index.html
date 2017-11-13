@@ -1,0 +1,10 @@
+{% if all_car_list %}
+  <ul>
+  {% for car in all_car_list %}
+    <li><a href="{% url 'district_office:detail' car.vin %}">{{ car }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No cars are available.</p>
+{% endif %}
+
