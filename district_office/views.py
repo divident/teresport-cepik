@@ -29,17 +29,20 @@ class CarAdd(CreateView):
     success_url = '/office/'
 
 def card_generation_view(request, car_id):
-  car = Car.objects.get(pk=car_id)
-  response = HttpResponse(content_type='application/pdf')
-  response['Content-Disposition'] = 'attachment; filename="'+car_id+'.pdf"'
-  p = canvas.Canvas(response)
-  offset = 100
-  fields = car.__dict__
-  for field, value in fields.items():
-    if (field == "_state"):
-      continue
-    p.drawString(100, offset, str(field) + " - " + str(value))
-    offset = offset + 50
-  p.showPage()
-  p.save()
-  return response
+  try:
+    car = Car.objects.get(pk=car_id)
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="'+car_id+'.pdf"'
+    p = canvas.Canvas(response)
+    offset = 100
+    fields = car.__dict__
+    for field, value in fields.items():
+      if (field == "_state"):
+        continue
+      p.drawString(100, offset, str(field) + " - " + str(value))
+      offset = offset + 50
+    p.showPage()
+    p.save()
+    return response
+  except:
+    return "Car doesn't exist"
