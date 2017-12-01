@@ -6,4 +6,5 @@ app_name = 'district_office'
 urlpatterns = [
   url(r'^$', views.CarListView.as_view(), name='index'),
   url(r'^(?P<pk>[A-Z0-9]+)/detail/$', views.CarDetailView.as_view(), name='detail'),
+  url(r'^add/$', views.CarAdd.as_view(), name='add'),
 ]
