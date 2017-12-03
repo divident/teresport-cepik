@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView
 from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
@@ -46,3 +47,10 @@ def card_generation_view(request, car_id):
     return response
   except:
     return "Car doesn't exist"
+	
+class CarUpdateView(UpdateView):
+    model = Car
+    fields = ['vin','owner','reg_no','model','mark','production_year','engine_number','engine_capacity','engine_power','last_tech_exam']
+    template_name_suffix = '_update_form'
+    def get_success_url(self):
+        return "/office/"
