@@ -7,7 +7,7 @@ from django.views import generic
 from django.http import HttpResponse
 
 from reportlab.pdfgen import canvas
-from .models import Car
+from .models import Car, HealthExamination
 
 class CarListView(generic.ListView):
   template_name = 'district_office/index.html'
@@ -54,3 +54,18 @@ class CarUpdateView(UpdateView):
     template_name_suffix = '_update_form'
     def get_success_url(self):
         return "/office/"
+
+class HealthExaminationListView(generic.ListView):
+  template_name = 'district_office/health_index.html'
+  context_object_name = 'all_health_examination_list'
+
+  def get_queryset(self):
+    return HealthExamination.objects.all()
+
+
+class OutdatedHealthExaminationView(generic.DetailView):
+    model = HealthExamination
+    template_name = 'district_office/outdated.html'
+
+    def get_queryset(self):
+        return HealthExamination.objects.filter(pk=self.kwargs['pk'])

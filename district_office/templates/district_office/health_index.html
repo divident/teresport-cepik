@@ -1,0 +1,10 @@
+{% if all_health_examination_list %}
+  <ul>
+  {% for healthexamination in all_health_examination_list %}
+    <li><a href="{% url 'district_office:outdated' healthexamination.person %}">{{ person }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No health examinations are available.</p>
+{% endif %}
+

@@ -1,0 +1,11 @@
+<html>
+<body>
+<h1>{{ healthexamination.get_person_display }}</h1>
+{% for name, value in healthexamination.get_fields %}
+  <ul>
+    <li>{{ name }}: {{ value }}</li>
+  </ul>
+{% endfor %}
+</body>
+</html>
+
