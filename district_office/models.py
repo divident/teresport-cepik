@@ -71,3 +71,18 @@ class Policy(models.Model):
   person = models.ForeignKey(Person, on_delete=models.CASCADE)
   start_date = models.DateField()
   end_date = models.DateField()
+
+class HealthExamination(models.Model):
+  class Meta:
+    verbose_name_plural = 'Health Examinations'
+
+  doctor = models.CharField(max_length=70)
+  person = models.ForeignKey(Person, on_delete=models.CASCADE)
+  start_date = models.DateField()
+  end_date = models.DateField()
+
+  def __str__(self):
+    return str(self.person)
+
+
+
