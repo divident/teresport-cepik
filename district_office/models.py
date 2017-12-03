@@ -81,6 +81,17 @@ class HealthExamination(models.Model):
   start_date = models.DateField()
   end_date = models.DateField()
 
+  def get_fields(self):
+    pairs = []
+    for field in self._meta.fields:
+        name = field.name
+        try:
+            pairs.append((name, getattr(self, "get_%s_display" % name)()))
+        except AttributeError:
+            pairs.append((name, getattr(self, name)))
+    return pairs
+
+
   def __str__(self):
     return str(self.person)
 
