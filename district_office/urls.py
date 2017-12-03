@@ -10,5 +10,5 @@ urlpatterns = [
   url(r'^card/(?P<car_id>[A-Z0-9]+)/$', views.card_generation_view, name='card'),
   url(r'^(?P<pk>[A-Z0-9]+)/update/$', views.CarUpdateView.as_view(), name='update'),
   url(r'^health/$', views.HealthExaminationListView.as_view(), name='health'),
-  url(r'^health/(?P<pk>[A-Z0-9]+)/detail/$', views.OutdatedHealthExaminationView.as_view(), name='outdated'),
+  url(r'^health/(?P<pk>[0-9]+)/detail/$', views.OutdatedHealthExaminationView.as_view(), name='outdated'),
 ]

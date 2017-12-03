@@ -68,4 +68,4 @@ class OutdatedHealthExaminationView(generic.DetailView):
     template_name = 'district_office/outdated.html'
 
     def get_queryset(self):
-        return HealthExamination.objects.filter(pk=self.kwargs['pk'])
+      return HealthExamination.objects.filter(pk=self.kwargs['pk'])
