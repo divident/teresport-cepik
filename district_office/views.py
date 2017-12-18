@@ -7,7 +7,7 @@ from django.views import generic
 from django.http import HttpResponse
 
 from reportlab.pdfgen import canvas
-from .models import Car, HealthExamination
+from .models import Car, HealthExamination, TechnicalExamination
 
 class CarListView(generic.ListView):
   template_name = 'district_office/index.html'
@@ -69,3 +69,18 @@ class OutdatedHealthExaminationView(generic.DetailView):
 
     def get_queryset(self):
       return HealthExamination.objects.filter(pk=self.kwargs['pk'])
+
+class TechnicalExaminationListView(generic.ListView):
+
+    template_name = 'district_office/technical_index.html'
+    context_object_name = 'all_technical_examination_list'
+
+    def get_queryset(self):
+      return TechnicalExamination.objects.all()
+
+class OutdatedTechnicalExaminationView(generic.DetailView):
+    model = TechnicalExamination
+    template_name = 'district_office/outdated_tech.html'
+
+    def get_queryset(self):
+      return TechnicalExamination.objects.filter(pk=self.kwargs['pk'])

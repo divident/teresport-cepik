@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
-from .models import Car, Person, HealthExamination
+from .models import Car, Person, HealthExamination, TechnicalExamination
 import datetime
 import string
 import random
@@ -54,6 +54,14 @@ def create_car():
 def create_health_examination():
     return HealthExamination.objects.create(
       doctor=char_generator(HealthExamination._meta.get_field('doctor').max_length, string.ascii_uppercase),
+      person=create_person(),
+      start_date = rand_date(),
+      end_date = rand_date(),
+    )
+
+def create_technical_examination():
+    return TechnicalExamination.objects.create(
+      doctor=char_generator(TechnicalExamination._meta.get_field('technician').max_length, string.ascii_uppercase),
       person=create_person(),
       start_date = rand_date(),
       end_date = rand_date(),
@@ -123,3 +131,24 @@ class HealthExaminationViewTest(TestCase):
       response.context['all_health_examination_list'],
       ['<HealthExamination: ' + str(health_examination) + '>']
     )
+
+    class TechnicalExaminationViewTest(TestCase):
+        def test_no_technical_examination(self):
+            """
+                If no technical examinations exist, an appropriate message is displayed.
+                """
+            response = self.client.get(reverse('district_office:technical'))
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, "No technical examinations are available.")
+            self.assertQuerysetEqual(response.context['all_technical_examination_list'], [])
+
+        def test_technical_examination_exist(self):
+            """
+            If technical examinations exist in databse, they are display
+            """
+            technical_examination = create_technical_examination()
+            response = self.client.get(reverse('district_office:technical'))
+            self.assertQuerysetEqual(
+                response.context['all_technical_examination_list'],
+                ['<technicalExamination: ' + str(technical_examination) + '>']
+            )

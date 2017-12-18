@@ -1,0 +1,9 @@
+{% if all_technical_examination_list %}
+  <ul>
+  {% for technicalexamination in all_technical_examination_list %}
+    <li><a href="{% url 'district_office:outdated_tech' technicalexamination.pk %}">{{ technicalexamination }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No technical examinations are available.</p>
+{% endif %}
