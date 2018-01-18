@@ -1,0 +1,10 @@
+<html>
+<body>
+<h1>{{ technicalexamination }}</h1>
+{% for name, value in technicalexamination.get_fields %}
+  <ul>
+    <li>{{ name }}: {{ value }}</li>
+  </ul>
+{% endfor %}
+</body>
+</html>

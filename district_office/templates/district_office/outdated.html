@@ -1,9 +1,11 @@
 <html>
 <body>
-<h3>{{ healthexamination }}</h3>
+<h1>{{ healthexamination }}</h1>
+{% for name, value in healthexamination.get_fields %}
   <ul>
-    <li>Doctor: {{healthexamination.doctor}}</li>
+    <li>{{ name }}: {{ value }}</li>
   </ul>
+{% endfor %}
 </body>
 </html>
 
