@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^office/', include('district_office.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]

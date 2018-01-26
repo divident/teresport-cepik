@@ -5,6 +5,8 @@ from django.views.generic.edit import UpdateView
 from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from reportlab.pdfgen import canvas
 from .models import Car, HealthExamination, TechnicalExamination
@@ -22,7 +24,8 @@ class CarDetailView(generic.DetailView):
    
    def get_queryset(self):
      return Car.objects.filter(pk=self.kwargs['pk'])
-     
+
+@method_decorator(login_required, name='dispatch')    
 class CarAdd(CreateView):
     model = Car
     fields=['vin','owner','reg_no','model','mark','production_year',
