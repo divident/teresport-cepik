@@ -49,6 +49,7 @@ def create_car():
         engine_capacity=random.randint(1000, 2000),
         engine_power=random.randint(100, 300),
         last_tech_exam=rand_date(),
+		car_status = Normal;
     )
 
 def create_health_examination():

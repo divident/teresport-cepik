@@ -1,0 +1,14 @@
+{% if all_car_list %}
+  <ul>
+  {% for car in all_car_list %}
+    <li><a href="{% url 'district_office:updatestatus' car.vin %}">{{ car }}</a></li>
+	
+  {% endfor %}
+  </ul>
+<button onclick="location.href='{% url 'district_office:index'%}'">Back</button>
+{% else %}
+  <p>No cars are available.</p>
+  <button onclick="location.href='{% url 'district_office:index'%}'">Back</button>
+
+{% endif %}
+

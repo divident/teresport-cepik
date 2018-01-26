@@ -7,7 +7,11 @@ GENDER_CHOICES = (
     ('M', 'Male'),
     ('F', 'Female'),
 )
-
+STATUS_CHOICES= (
+        ('Stolen', 'Stolen'),
+        ('Found', 'Found'),
+        ('Normal', 'Normal'),        
+    )
 class Person(models.Model):
     class Meta:
         verbose_name_plural = 'People'
@@ -27,7 +31,7 @@ class Person(models.Model):
         return '%s %s' % (self.first_name, self.last_name)
 
 
-class Car(models.Model):
+class Car(models.Model):     
     vin = models.CharField(max_length=17, primary_key=True)
     owner = models.ForeignKey(Person, on_delete=models.CASCADE)
     reg_no = models.CharField(max_length=8)
@@ -38,7 +42,8 @@ class Car(models.Model):
     engine_capacity = models.IntegerField()
     engine_power = models.IntegerField()
     last_tech_exam = models.DateField()
-
+    car_status = models.CharField(max_length=6,choices=STATUS_CHOICES,default='Normal')
+	
     """
   Make possible to display all fields of car, using for loop.
   """
@@ -119,5 +124,8 @@ class TechnicalExamination(models.Model):
 
     def __str__(self):
       return str(self.person)
+    	
 
+    
+  	
 

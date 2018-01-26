@@ -17,6 +17,19 @@ class CarListView(generic.ListView):
   
   def get_queryset(self):
     return Car.objects.all()
+    	
+class CarStatus(generic.ListView):
+  template_name = 'district_office/car_status.html'
+  context_object_name = 'all_car_list'
+  
+  def get_queryset(self):
+    return Car.objects.all()
+class CarUpdateStatus(UpdateView):
+    model = Car
+    fields = ['vin','car_status']
+    template_name = 'district_office/status_update_form.html'
+    def get_success_url(self):
+        return "/office/"
     
 class CarDetailView(generic.DetailView):
    model = Car
@@ -29,7 +42,7 @@ class CarDetailView(generic.DetailView):
 class CarAdd(CreateView):
     model = Car
     fields=['vin','owner','reg_no','model','mark','production_year',
-	'engine_number','engine_capacity','engine_power','last_tech_exam']
+	'engine_number','engine_capacity','engine_power','last_tech_exam',]
     success_url = '/office/'
 
 def card_generation_view(request, car_id):
@@ -87,3 +100,5 @@ class OutdatedTechnicalExaminationView(generic.DetailView):
 
     def get_queryset(self):
       return TechnicalExamination.objects.filter(pk=self.kwargs['pk'])
+	  
+
