@@ -17,7 +17,12 @@ class CarListView(generic.ListView):
   
   def get_queryset(self):
     return Car.objects.all()
-    	
+class 	StolenCarListView(generic.ListView):
+    context_object_name = 'stolen_car_list'  
+    template_name = 'district_office/stolen_list.html' 
+    def get_queryset(self):  
+        x=self.request.GET.get('search_box', "")
+        return Car.objects.filter(vin__contains=x,car_status="Stolen")
 class CarStatus(generic.ListView):
   template_name = 'district_office/car_status.html'
   context_object_name = 'all_car_list'

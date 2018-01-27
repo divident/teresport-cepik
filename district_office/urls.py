@@ -16,4 +16,5 @@ urlpatterns = [
   url(r'^health/(?P<pk>[0-9]+)/detail/$', views.OutdatedHealthExaminationView.as_view(), name='outdated'),
   url(r'^technical/$', views.TechnicalExaminationListView.as_view(), name='technical'),
   url(r'^technical/(?P<pk>[0-9]+)/detail/$', views.OutdatedTechnicalExaminationView.as_view(), name='outdated_tech'),
+  url(r'^stolen/$', views.StolenCarListView.as_view(), name='stolen'),
 ]

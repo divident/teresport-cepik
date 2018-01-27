@@ -6,9 +6,11 @@
   </ul>
   <button onclick="location.href='{% url 'district_office:add'%}'">Register new car</button>
   <button onclick="location.href='{% url 'district_office:status'%}'">Change car status</button>
+  <button onclick="location.href='{% url 'district_office:stolen'%}'">Stolen cars</button>
 {% else %}
   <p>No cars are available.</p>
   <button onclick="location.href='{% url 'district_office:add'%}'">Register new car</button>
   <button onclick="location.href='{% url 'district_office:status'%}'">Change car status</button>
+  <button onclick="location.href='{% url 'district_office:stolen'%}'">Stolen cars</button>
 {% endif %}
 
