@@ -1,16 +1,16 @@
 {% if all_car_list %}
-  <ul>
-  {% for car in all_car_list %}
-    <li><a href="{% url 'district_office:detail' car.vin %}">{{ car }}</a></li>
-  {% endfor %}
-  </ul>
-  <button onclick="location.href='{% url 'district_office:add'%}'">Register new car</button>
-  <button onclick="location.href='{% url 'district_office:status'%}'">Change car status</button>
-  <button onclick="location.href='{% url 'district_office:stolen'%}'">Stolen cars</button>
+    <ul>
+        {% for car in all_car_list %}
+            <li><a href="{% url 'district_office:detail' car.vin %}">{{ car }}</a></li>
+        {% endfor %}
+    </ul>
+    <button onclick="location.href='{% url 'district_office:add' %}'">Register new car</button>
+    <button onclick="location.href='{% url 'district_office:status' %}'">Change car status</button>
+    <button onclick="location.href='{% url 'district_office:stolen' %}'">Stolen cars</button>
 {% else %}
-  <p>No cars are available.</p>
-  <button onclick="location.href='{% url 'district_office:add'%}'">Register new car</button>
-  <button onclick="location.href='{% url 'district_office:status'%}'">Change car status</button>
-  <button onclick="location.href='{% url 'district_office:stolen'%}'">Stolen cars</button>
+    <p>No cars are available.</p>
+    <button onclick="location.href='{% url 'district_office:add' %}'">Register new car</button>
+    <button onclick="location.href='{% url 'district_office:status' %}'">Change car status</button>
+    <button onclick="location.href='{% url 'district_office:stolen' %}'">Stolen cars</button>
 {% endif %}
 

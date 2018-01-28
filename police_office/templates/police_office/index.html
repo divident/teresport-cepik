@@ -1,0 +1,13 @@
+{% if all_car_list %}
+    <ul>
+        {% for car in all_car_list %}
+            <li><a href="{% url 'police_office:detail' car.vin %}">{{ car }}</a></li>
+        {% endfor %}
+    </ul>
+    <button onclick="location.href='{% url 'police_office:add' %}'">Register new car</button>
+{% else %}
+    <p>No cars are available.</p>
+    <button onclick="location.href='{% url 'police_office:add' %}'">Register new car</button>
+
+{% endif %}
+

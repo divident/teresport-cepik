@@ -57,7 +57,25 @@ class Car(models.Model):
     engine_power = models.IntegerField()
     last_tech_exam = models.DateField()
     special_treatment = models.CharField(max_length=1, choices=SPECIAL_treatment_CHOICES)
-        
+
+    """
+  Make possible to display all fields of car, using for loop.
+  """
+
+    def get_fields(self):
+        pairs = []
+        for field in self._meta.fields:
+            name = field.name
+            try:
+                pairs.append((name, getattr(self, "get_%s_display" % name)()))
+            except AttributeError:
+                pairs.append((name, getattr(self, name)))
+        return pairs
+
+    def __str__(self):
+        return '%s' % (self.vin)
+
+
 class InsuranceCompany(models.Model):
     class Meta:
         verbose_name_plural = 'Inscurance Companies'

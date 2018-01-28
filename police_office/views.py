@@ -13,14 +13,32 @@ from .models import Car
 
 class CarListView(generic.ListView):
   template_name = 'police_office/index.html'
-  context_object_name = 'all_car_list'
+  context_object_name = 'all_police_cars_list'
   
   def get_queryset(self):
     return Car.objects.all()
-    
+
+
 class CarDetailView(generic.DetailView):
-   model = Car
-   template_name = 'police_office/detail.html'
-   
-   def get_queryset(self):
-     return Car.objects.filter(pk=self.kwargs['pk'])
+    model = Car
+    template_name = 'police_office/detail.html'
+
+    def get_queryset(self):
+        return Car.objects.filter(pk=self.kwargs['pk'])
+
+
+@method_decorator(login_required, name='dispatch')
+class CarAdd(CreateView):
+    model = Car
+    fields = ['vin', 'owner', 'reg_no', 'model', 'mark', 'production_year',
+              'engine_number', 'engine_capacity', 'engine_power', 'last_tech_exam', 'special_treatment', ]
+    success_url = '/police/'
+
+
+
+class CarUpdateView(UpdateView):
+    model = Car
+    fields = ['vin','owner','reg_no','model','mark','production_year','engine_number','engine_capacity','engine_power','last_tech_exam', 'special_treatment']
+    template_name_suffix = '_update_form'
+    def get_success_url(self):
+        return "/police/"
