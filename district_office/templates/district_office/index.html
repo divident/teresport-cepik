@@ -1,3 +1,5 @@
+{% extends "base_generic.html" %}
+{% block body_block %}
 {% if all_car_list %}
     <ul>
         {% for car in all_car_list %}
@@ -13,4 +15,5 @@
     <button onclick="location.href='{% url 'district_office:status' %}'">Change car status</button>
     <button onclick="location.href='{% url 'district_office:stolen' %}'">Stolen cars</button>
 {% endif %}
+{% endblock %}
 
