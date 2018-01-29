@@ -11,7 +11,7 @@ GENDER_CHOICES = (
 )
 SPECIAL_treatment_CHOICES = (
     ('Y', 'Yes'),
-    ('N', 'Yes'),
+    ('N', 'No'),
     )
 class Person(models.Model):
     class Meta:
@@ -29,7 +29,7 @@ class Person(models.Model):
 
     def __str__(self):
         return '%s %s' % (self.first_name, self.last_name)
-    
+"""
 class Company(models.Model):
     class Meta:
         verbose_name_plural = 'Companies'
@@ -45,9 +45,10 @@ class Company(models.Model):
 
     def __str__(self):
         return '%s %s' % (self.nip, self.company_name)
+        """
 class Car(models.Model):
     vin = models.CharField(max_length=17, primary_key=True)
-    owner = models.ForeignKey(Company, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Person, on_delete=models.CASCADE)
     reg_no = models.CharField(max_length=8)
     model = models.CharField(max_length=50)
     mark = models.CharField(max_length=50)
@@ -55,7 +56,6 @@ class Car(models.Model):
     engine_number = models.CharField(max_length=20)
     engine_capacity = models.IntegerField()
     engine_power = models.IntegerField()
-    last_tech_exam = models.DateField()
     special_treatment = models.CharField(max_length=1, choices=SPECIAL_treatment_CHOICES)
 
     """
@@ -75,7 +75,7 @@ class Car(models.Model):
     def __str__(self):
         return '%s' % (self.vin)
 
-
+"""
 class InsuranceCompany(models.Model):
     class Meta:
         verbose_name_plural = 'Inscurance Companies'
@@ -94,25 +94,5 @@ class Policy(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
+    """
                                     
-class TechnicalExamination(models.Model):
-    class Meta:
-        verbose_name_plural = 'Technical Examinations'
-
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
-    technician_person = models.CharField(max_length=70, blank=True)
-    start_date = models.DateField()
-    end_date = models.DateField()
-
-    def get_fields(self):
-        pairs = []
-        for field in self._meta.fields:
-            name = field.name
-            try:
-                pairs.append((name, getattr(self, "get_%s_display" % name)()))
-            except AttributeError:
-                pairs.append((name, getattr(self, name)))
-        return pairs
-
-    def __str__(self):
-      return str(self.person)

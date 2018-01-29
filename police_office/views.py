@@ -31,14 +31,20 @@ class CarDetailView(generic.DetailView):
 class CarAdd(CreateView):
     model = Car
     fields = ['vin', 'owner', 'reg_no', 'model', 'mark', 'production_year',
-              'engine_number', 'engine_capacity', 'engine_power', 'last_tech_exam', 'special_treatment', ]
+              'engine_number', 'engine_capacity', 'engine_power', 'special_treatment', ]
     success_url = '/police/'
 
 
 
 class CarUpdateView(UpdateView):
     model = Car
-    fields = ['vin','owner','reg_no','model','mark','production_year','engine_number','engine_capacity','engine_power','last_tech_exam', 'special_treatment']
+    fields = ['vin','owner','reg_no','model','mark','production_year','engine_number','engine_capacity','engine_power', 'special_treatment']
     template_name_suffix = '_update_form'
     def get_success_url(self):
         return "/police/"
+
+
+
+
+
+
