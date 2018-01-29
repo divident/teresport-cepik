@@ -11,7 +11,7 @@ from django.utils.decorators import method_decorator
 from reportlab.pdfgen import canvas
 from .models import PoliceCar
 
-class CarListView(generic.ListView):
+class PoliceCarListView(generic.ListView):
   template_name = 'police_office/index.html'
   context_object_name = 'all_police_cars_list'
   
@@ -19,7 +19,7 @@ class CarListView(generic.ListView):
     return PoliceCar.objects.all()
 
 
-class CarDetailView(generic.DetailView):
+class PoliceCarDetailView(generic.DetailView):
     model = PoliceCar
     template_name = 'police_office/detail.html'
 

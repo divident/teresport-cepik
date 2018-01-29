@@ -1,13 +1,11 @@
 <html>
 <body>
-<h1>{{ car.get_vin_display }}</h1>
-{% for name, value in car.get_fields %}
-  <ul>
-    <li>{{ name }}: {{ value }}</li>
-  </ul>
-{% endfor %}
-<a href="{% url 'police_office:card' car.pk %}">Generate card</a>
-<a href="{% url 'police_office:update' car.vin %}">UPDATE</a>
+<h1>{{ object.vin }}</h1>
+<p>{{ object.reg_no }}</p>
+<p>{{ object.model }}</p>
+<p>{{ object.mark }}</p>
+<p>{{ object.production_year}}</p>
+
 </body>
 </html>
 

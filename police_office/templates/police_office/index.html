@@ -1,7 +1,7 @@
-{% if all_car_list %}
+{% if all_police_cars_list %}
     <ul>
-        {% for car in all_car_list %}
-            <li><a href="{% url 'district_office:detail' car.vin %}">{{ car }}</a></li>
+        {% for car in all_police_cars_list %}
+            <li><a href="{% url 'police_office:detail' car.vin %}">{{ car }}</a></li>
         {% endfor %}
     </ul>
 

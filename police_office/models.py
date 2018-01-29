@@ -14,6 +14,9 @@ class PoliceStation(models.Model):
   city = models.CharField(max_length=50)
   street_address = models.CharField(max_length=50)
   
+  def __str__(self):
+    return '%s %s' % (self.postal_code, self.city)
+  
 class PoliceCar(models.Model):
     vin = models.CharField(max_length=17, primary_key=True)
     station_assigned = models.ForeignKey(PoliceStation, on_delete=models.CASCADE)
@@ -25,7 +28,7 @@ class PoliceCar(models.Model):
     engine_capacity = models.IntegerField()
     engine_power = models.IntegerField()
     special_treatment = models.CharField(max_length=1, choices=SPECIAL_treatment_CHOICES)
-
+    
 
     def get_fields(self):
         pairs = []

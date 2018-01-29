@@ -4,6 +4,6 @@ from . import views
 
 app_name = 'police_office'
 urlpatterns = [
-    url(r'^$', views.CarListView.as_view(), name='index'),
-    url(r'^(?P<pk>[A-Z0-9]+)/detail/$', views.CarDetailView.as_view(), name='detail'),
+    url(r'^$', views.PoliceCarListView.as_view(), name='index'),
+    url(r'^(?P<pk>[A-Z0-9]+)/detail/$', views.PoliceCarDetailView.as_view(), name='detail'),
 ]
