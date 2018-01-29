@@ -5,10 +5,10 @@
 	
   {% endfor %}
   </ul>
-<button onclick="location.href='{% url 'district_office:index'%}'">Back</button>
+<button onclick="location.href='{% url 'district_office:index'%}'">Powrot</button>
 {% else %}
-  <p>No cars are available.</p>
-  <button onclick="location.href='{% url 'district_office:index'%}'">Back</button>
+  <p>Brak dostepnych samochodow.</p>
+  <button onclick="location.href='{% url 'district_office:index'%}'">Powrot</button>
 
 {% endif %}
 

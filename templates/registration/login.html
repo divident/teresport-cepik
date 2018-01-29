@@ -2,15 +2,15 @@
 {% block body_block %}
 
 {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+<p>Wprowadzono bledny login lub haslo. Sprobuj ponownie.</p>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
+    <p>Twoje konto nie posiada wymaganych uprawnien. 
+	Aby kontynuowac zaloguj sie na konto, ktore ma dostateczne uprawnienia.</p>
     {% else %}
-    <p>Please login to see this page.</p>
+    <p>Zaloguj sie, aby zobaczyc te strone</p>
     {% endif %}
 {% endif %}
 {% if user.is_authenticated %}
@@ -29,11 +29,11 @@
 </div>
 
 <div>
-  <input type="submit" value="login" />
+  <input type="submit" value="Zaloguj" />
   <input type="hidden" name="next" value="{{ next }}" />
 </div>
 </form>
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<p><a href="{% url 'password_reset' %}">Zapomniales hasla?</a></p>
 {% endif %}
 
 

@@ -1,5 +1,5 @@
 <form action="" method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Update"/>
-	<a href="{% url 'district_office:detail' car.vin %}">go back</a>
+    <input type="submit" value="Aktualizuj"/>
+	<a href="{% url 'district_office:detail' car.vin %}">Powrot</a>
 </form>

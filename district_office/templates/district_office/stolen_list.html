@@ -1,6 +1,6 @@
 <form type="GET" action="." style="margin: 0">
-    <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
-    <button id="search_submit" type="submit" value >Submit</button>
+    <input  id="search_box" type="text" name="search_box"  placeholder="Szukaj..." >
+    <button id="search_submit" type="submit" value >Zatwierdz</button>
 </form>
 {% if stolen_car_list %}
   <ul>
@@ -9,6 +9,6 @@
   {% endfor %}
   </ul>
 {% else %}
-  <p>No cars are available.</p>
+  <p>Brak dostepnych samochodow.</p>
 {% endif %}
-<a href="{% url 'district_office:index' %}">go back</a>
+<a href="{% url 'district_office:index' %}">Powrot</a>
