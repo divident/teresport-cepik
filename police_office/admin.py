@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import Person, Car
+from .models import PoliceStation, PoliceCar
 
-admin.site.register(Person)
-admin.site.register(Car)
+admin.site.register(PoliceStation)
+admin.site.register(PoliceCar)

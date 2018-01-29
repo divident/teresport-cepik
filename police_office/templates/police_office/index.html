@@ -4,7 +4,6 @@
             <li><a href="{% url 'district_office:detail' car.vin %}">{{ car }}</a></li>
         {% endfor %}
     </ul>
-    <button onclick="location.href='{% url 'district_office:add' %}'">Register new car</button>
 
 {% else %}
     <p>No cars are available.</p>
