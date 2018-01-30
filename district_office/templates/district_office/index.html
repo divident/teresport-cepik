@@ -8,11 +8,13 @@
     </ul>
     <button onclick="location.href='{% url 'district_office:add' %}'">Zarejestruj nowy samochod</button>
     <button onclick="location.href='{% url 'district_office:status' %}'">Zmien status samochodu</button>
+    <button onclick="location.href='{% url 'district_office:search' %}'">Wyszukaj samochod</button>
     <button onclick="location.href='{% url 'district_office:stolen' %}'">Skradzione samochody</button>
 {% else %}
     <p>Brak dostepnych samochodow.</p>
     <button onclick="location.href='{% url 'district_office:add' %}'">Zarejestruj nowy samochod</button>
     <button onclick="location.href='{% url 'district_office:status' %}'">Zmien status samochodu</button>
+    <button onclick="location.href='{% url 'district_office:search' %}'">Wyszukaj samochod</button>
     <button onclick="location.href='{% url 'district_office:stolen' %}'">Skradzione samochody</button>
 {% endif %}
 {% endblock %}
