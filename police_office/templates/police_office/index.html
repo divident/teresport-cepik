@@ -4,8 +4,10 @@
             <li><a href="{% url 'police_office:detail' car.vin %}">{{ car }}</a></li>
         {% endfor %}
     </ul>
+    <button onclick="location.href='{% url 'police_office:add' %}'">Zarejestruj nowy samochod</button>
 
 {% else %}
     <p>Brak samochodów policyjnych.</p>
+    <button onclick="location.href='{% url 'police_office:add' %}'">Zarejestruj nowy samochod</button>
 {% endif %}
 

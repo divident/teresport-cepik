@@ -6,8 +6,8 @@
     <li>{{ name }}: {{ value }}</li>
   </ul>
 {% endfor %}
-<a href="{% url 'district_office:card' car.pk %}">Wygeneruj karte</a>
-<a href="{% url 'district_office:update' car.vin %}">AKTUALIZUJ</a>
+<button onclick="location.href='{% url 'district_office:card' car.vin %}'">Wygeneruj karte</button>
+<button onclick="location.href='{% url 'district_office:update' car.vin %}'">AKTUALIZUJ</button>
 </body>
 </html>
 

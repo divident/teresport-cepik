@@ -26,6 +26,23 @@ class PoliceCarDetailView(generic.DetailView):
     def get_queryset(self):
         return PoliceCar.objects.filter(pk=self.kwargs['pk'])
 
+@method_decorator(login_required, name='dispatch')
+class PoliceCarAdd(CreateView):
+    model = PoliceCar
+    fields=['vin','station_assigned','reg_no','model','mark','production_year',
+	'engine_number','engine_capacity','engine_power','special_treatment',]
+    success_url = '/police/'
+
+class PoliceCarUpdateView(UpdateView):
+    model = PoliceCar
+    fields = ['vin', 'station_assigned', 'reg_no', 'model', 'mark', 'production_year',
+              'engine_number', 'engine_capacity', 'engine_power', 'special_treatment', ]
+    template_name_suffix = '_update_form'
+    def get_success_url(self):
+        return "/police/"
+
+
+
 
 
 

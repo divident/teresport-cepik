@@ -1,11 +1,12 @@
 <html>
 <body>
-<h1>{{ object.vin }}</h1>
-<p>{{ object.reg_no }}</p>
-<p>{{ object.model }}</p>
-<p>{{ object.mark }}</p>
-<p>{{ object.production_year}}</p>
-
+<h1>{{ car.get_vin_display }}</h1>
+{% for name, value in policecar.get_fields %}
+  <ul>
+    <li>{{ name }}: {{ value }}</li>
+  </ul>
+{% endfor %}
+<button onclick="location.href='{% url 'police_office:update' policecar.vin %}'">AKTUALIZUJ</button>
 </body>
 </html>
 
