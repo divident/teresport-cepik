@@ -17,14 +17,16 @@ class CarListView(generic.ListView):
   
   def get_queryset(self):
     return Car.objects.all()
-    
+
+@method_decorator(login_required, name='dispatch')        
 class 	StolenCarListView(generic.ListView):
     context_object_name = 'stolen_car_list'  
     template_name = 'district_office/stolen_list.html' 
     def get_queryset(self):  
         x=self.request.GET.get('search_box', "")
         return Car.objects.filter(vin__contains=x,car_status="Stolen")
-        
+
+@method_decorator(login_required, name='dispatch')            
 class CarStatus(generic.ListView):
   template_name = 'district_office/car_status.html'
   context_object_name = 'all_car_list'
@@ -32,13 +34,15 @@ class CarStatus(generic.ListView):
   def get_queryset(self):
     return Car.objects.all()
     
+@method_decorator(login_required, name='dispatch')        
 class CarUpdateStatus(UpdateView):
     model = Car
     fields = ['vin','car_status']
     template_name = 'district_office/status_update_form.html'
     def get_success_url(self):
         return "/office/"
-    
+
+@method_decorator(login_required, name='dispatch')            
 class CarDetailView(generic.DetailView):
    model = Car
    template_name = 'district_office/detail.html'
@@ -71,14 +75,16 @@ def card_generation_view(request, car_id):
     return response
   except:
     return "Car doesn't exist"
-	
+
+@method_decorator(login_required, name='dispatch')        
 class CarUpdateView(UpdateView):
     model = Car
     fields = ['vin','owner','reg_no','model','mark','production_year','engine_number','engine_capacity','engine_power','last_tech_exam']
     template_name_suffix = '_update_form'
     def get_success_url(self):
         return "/office/"
-
+        
+@method_decorator(login_required, name='dispatch')    
 class HealthExaminationListView(generic.ListView):
   template_name = 'district_office/health_index.html'
   context_object_name = 'all_health_examination_list'
@@ -86,7 +92,7 @@ class HealthExaminationListView(generic.ListView):
   def get_queryset(self):
     return HealthExamination.objects.all()
 
-
+@method_decorator(login_required, name='dispatch')    
 class OutdatedHealthExaminationView(generic.DetailView):
     model = HealthExamination
     template_name = 'district_office/outdated.html'
@@ -94,6 +100,7 @@ class OutdatedHealthExaminationView(generic.DetailView):
     def get_queryset(self):
       return HealthExamination.objects.filter(pk=self.kwargs['pk'])
 
+@method_decorator(login_required, name='dispatch')          
 class TechnicalExaminationListView(generic.ListView):
 
     template_name = 'district_office/technical_index.html'
@@ -102,13 +109,15 @@ class TechnicalExaminationListView(generic.ListView):
     def get_queryset(self):
       return TechnicalExamination.objects.all()
 
+@method_decorator(login_required, name='dispatch')          
 class OutdatedTechnicalExaminationView(generic.DetailView):
     model = TechnicalExamination
     template_name = 'district_office/outdated_tech.html'
 
     def get_queryset(self):
       return TechnicalExamination.objects.filter(pk=self.kwargs['pk'])
-
+      
+@method_decorator(login_required, name='dispatch')    
 class SearchCarListView(generic.ListView):
     template_name = 'district_office/search_list.html'
     context_object_name = 'search_car_list'

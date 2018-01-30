@@ -18,7 +18,7 @@ class PoliceCarListView(generic.ListView):
   def get_queryset(self):
     return PoliceCar.objects.all()
 
-
+@method_decorator(login_required, name='dispatch')
 class PoliceCarDetailView(generic.DetailView):
     model = PoliceCar
     template_name = 'police_office/detail.html'
