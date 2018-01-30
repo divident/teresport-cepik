@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from district_office import views  
 
 urlpatterns = [
+    url(r'^$', views.CarListView.as_view(), name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^office/', include('district_office.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
