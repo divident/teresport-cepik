@@ -9,16 +9,20 @@
             <li><a href="{% url 'district_office:detail' car.vin %}">{{ car }}</a></li>
         {% endfor %}
     </ul>
+    <!--
     <button onclick="location.href='{% url 'district_office:add' %}'">Zarejestruj nowy samochód</button>
     <button onclick="location.href='{% url 'district_office:status' %}'">Zmien status samochodu</button>
     <button onclick="location.href='{% url 'district_office:search' %}'">Wyszukaj samochód</button>
     <button onclick="location.href='{% url 'district_office:stolen' %}'">Skradzione samochody</button>
+    -->
 {% else %}
     <p>Brak dostępnych samochodow.</p>
+    <!--
     <button onclick="location.href='{% url 'district_office:add' %}'">Zarejestruj nowy samochód</button>
     <button onclick="location.href='{% url 'district_office:status' %}'">Zmień status samochodu</button>
     <button onclick="location.href='{% url 'district_office:search' %}'">Wyszukaj samochód</button>
     <button onclick="location.href='{% url 'district_office:stolen' %}'">Skradzione samochody</button>
+    -->
 {% endif %}
 </div>
 {% endblock %}

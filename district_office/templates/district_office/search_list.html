@@ -1,7 +1,10 @@
+{% extends "base_generic.html" %}
+{% block body_block %}
+ <div style="margin-left:35%">
 <form type="GET" action="." style="margin: 0">
     <p></p><b>Wpisz nr rejestracji samochodu</b></p>
     <input  id="search_box" type="text" name="search_box"  placeholder="Szukaj..." >
-    <button id="search_submit" type="submit" value >Zatwierdz</button>
+    <button id="search_submit" type="submit" value >Zatwierdź</button>
 </form>
 {% if search_car_list %}
   <ul>
@@ -12,4 +15,5 @@
 {% else %}
   <p>No cars are available.</p>
 {% endif %}
-<a href="{% url 'district_office:index' %}">powrot</a>
+<div>
+{% endblock %}
