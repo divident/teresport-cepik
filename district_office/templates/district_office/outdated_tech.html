@@ -1,10 +1,15 @@
+{% extends "base_generic.html" %}
+{% block body_block %}
 <html>
 <body>
+ <div style="margin-left:35%">
 <h1>{{ technicalexamination }}</h1>
 {% for name, value in technicalexamination.get_fields %}
   <ul>
     <li>{{ name }}: {{ value }}</li>
   </ul>
 {% endfor %}
+</div>
 </body>
 </html>
+{% endblock %}

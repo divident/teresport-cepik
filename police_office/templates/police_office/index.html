@@ -1,11 +1,17 @@
+{% extends "base_generic_police.html" %}
+{% block body_block %}
 {% if all_police_cars_list %}
+ <div style="margin-left:35%">
+	<h2>Lista wszystkich pojazdów </h2>
+	<br>
     <ul>
         {% for car in all_police_cars_list %}
             <li><a href="{% url 'police_office:detail' car.vin %}">{{ car }}</a></li>
         {% endfor %}
     </ul>
-
+</div>
 {% else %}
     <p>Brak samochodów policyjnych.</p>
 {% endif %}
+{% endblock %}
 

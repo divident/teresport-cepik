@@ -1,5 +1,7 @@
-
+{% extends "base_generic.html" %}
+{% block body_block %}
 {% if all_health_examination_list %}
+ <div style="margin-left:35%">
   <ul>
   {% for healthexamination in all_health_examination_list %}
     <li><a href="{% url 'district_office:outdated' healthexamination.pk %}">{{ healthexamination }}</a></li>
@@ -7,5 +9,7 @@
   </ul>
 {% else %}
   <p>Brak dostepnych badan lekarskich</p>
+  </div>
 {% endif %}
+{% endblock %}
 

@@ -1,4 +1,7 @@
+{% extends "base_generic.html" %}
+{% block body_block %}
 {% if all_technical_examination_list %}
+ <div style="margin-left:35%">
   <ul>
   {% for technicalexamination in all_technical_examination_list %}
     <li><a href="{% url 'district_office:outdated_tech' technicalexamination.pk %}">{{ technicalexamination }}</a></li>
@@ -6,4 +9,6 @@
   </ul>
 {% else %}
   <p>Brak dostepnych badan technicznych</p>
+  </div>
 {% endif %}
+{% endblock %}

@@ -1,11 +1,14 @@
+{% extends "base_generic_police.html" %}
+{% block body_block %}
 <html>
 <body>
+ <div style="margin-left:35%">
 <h1>{{ object.vin }}</h1>
 <p>{{ object.reg_no }}</p>
 <p>{{ object.model }}</p>
 <p>{{ object.mark }}</p>
 <p>{{ object.production_year}}</p>
-
+</div>
 </body>
 </html>
-
+{% endblock %}

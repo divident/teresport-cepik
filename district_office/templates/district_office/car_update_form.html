@@ -1,5 +1,12 @@
+{% extends "base_generic.html" %}
+{% block body_block %}
+ <div style="margin-left:35%">
+   <h2>Aktualizacja informacji o pojeździe </h2>
+  <br>
 <form action="" method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Aktualizuj"/>
-	<a href="{% url 'district_office:detail' car.vin %}">Powrot</a>
+	<button><a href="{% url 'district_office:detail' car.vin %}">Powrot</a></button>
 </form>
+</div>
+{% endblock %}

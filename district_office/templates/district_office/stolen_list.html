@@ -1,8 +1,14 @@
+{% extends "base_generic.html" %}
+{% block body_block %}
+<div style="margin-left:35%">
+<h2>Lista skradzionych pojazdów </h2>
+<br>
 <form type="GET" action="." style="margin: 0">
     <input  id="search_box" type="text" name="search_box"  placeholder="Szukaj..." >
     <button id="search_submit" type="submit" value >Zatwierdz</button>
 </form>
 {% if stolen_car_list %}
+<br>
   <ul>
   {% for car in stolen_car_list %}
     <li><a>{{ car }}</a></li>
@@ -11,4 +17,5 @@
 {% else %}
   <p>Brak dostepnych samochodow.</p>
 {% endif %}
-<a href="{% url 'district_office:index' %}">Powrot</a>
+</div>
+{% endblock %}
