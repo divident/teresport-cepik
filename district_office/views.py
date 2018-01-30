@@ -108,5 +108,13 @@ class OutdatedTechnicalExaminationView(generic.DetailView):
 
     def get_queryset(self):
       return TechnicalExamination.objects.filter(pk=self.kwargs['pk'])
+
+class SearchCarListView(generic.ListView):
+    template_name = 'district_office/search_list.html'
+    context_object_name = 'search_car_list'
+
+    def get_queryset(self):
+        x = self.request.GET.get('search_box', "")
+        return Car.objects.filter(reg_no__contains=x)
 	  
 

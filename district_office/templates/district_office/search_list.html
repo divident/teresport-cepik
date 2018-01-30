@@ -1,0 +1,15 @@
+<form type="GET" action="." style="margin: 0">
+    <p></p><b>Wpisz nr rejestracji samochodu</b></p>
+    <input  id="search_box" type="text" name="search_box"  placeholder="Szukaj..." >
+    <button id="search_submit" type="submit" value >Zatwierdz</button>
+</form>
+{% if search_car_list %}
+  <ul>
+  {% for car in search_car_list %}
+    <li><a>{{ car }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No cars are available.</p>
+{% endif %}
+<a href="{% url 'district_office:index' %}">powrot</a>

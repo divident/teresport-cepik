@@ -2,15 +2,15 @@
 {% block body_block %}
  <div style="margin-left:35%">
 {% if form.errors %}
-<p>Wprowadzono bledny login lub haslo. Sprobuj ponownie.</p>
+<p>Wprowadzono bledny login lub hasło. Spróbuj ponownie.</p>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>Twoje konto nie posiada wymaganych uprawnien. 
-	Aby kontynuowac zaloguj sie na konto, ktore ma dostateczne uprawnienia.</p>
+    <p>Twoje konto nie posiada wymaganych uprawnień. 
+	Aby kontynuowac zaloguj sie na konto, które ma dostateczne uprawnienia.</p>
     {% else %}
-    <p>Zaloguj sie, aby zobaczyc te strone</p>
+    <p>Zaloguj się, aby zobaczyć tą strone</p>
     {% endif %}
 {% endif %}
 {% if user.is_authenticated %}
@@ -20,11 +20,11 @@
 {% csrf_token %}
 
 <div>
-  <td>{{ form.username.label_tag }}</td>
+  <td>Login</td>
   <td>{{ form.username }}</td>
 </div>
 <div>
-  <td>{{ form.password.label_tag }}</td>
+  <td>Hasło</td>
   <td>{{ form.password }}</td>
 </div>
 
@@ -33,7 +33,7 @@
   <input type="hidden" name="next" value="{{ next }}" />
 </div>
 </form>
-<p><a href="{% url 'password_reset' %}">Zapomniales hasla?</a></p>
+<p><a href="{% url 'password_reset' %}">Zapomniałeś hasła?</a></p>
 {% endif %}
 </div>
 

@@ -1,5 +1,6 @@
 {% extends "base_generic.html" %}
 {% block body_block %}
+<h3>Lista zarejestrowanych samochodów</h3>
 {% if all_car_list %}
  <div style="margin-left:35%">
 	<h2>Lista wszystkich pojazdów </h2>
@@ -9,11 +10,16 @@
             <li><a href="{% url 'district_office:detail' car.vin %}">{{ car }}</a></li>
         {% endfor %}
     </ul>
-</div>
+    <button onclick="location.href='{% url 'district_office:add' %}'">Zarejestruj nowy samochód</button>
+    <button onclick="location.href='{% url 'district_office:status' %}'">Zmien status samochodu</button>
+    <button onclick="location.href='{% url 'district_office:search' %}'">Wyszukaj samochód</button>
+    <button onclick="location.href='{% url 'district_office:stolen' %}'">Skradzione samochody</button>
 {% else %}
- <div style="margin-left:25%">
-    <p>Brak dostepnych samochodow.</p>
-	</div>
+    <p>Brak dostępnych samochodow.</p>
+    <button onclick="location.href='{% url 'district_office:add' %}'">Zarejestruj nowy samochód</button>
+    <button onclick="location.href='{% url 'district_office:status' %}'">Zmień status samochodu</button>
+    <button onclick="location.href='{% url 'district_office:search' %}'">Wyszukaj samochód</button>
+    <button onclick="location.href='{% url 'district_office:stolen' %}'">Skradzione samochody</button>
 {% endif %}
 {% endblock %}
 
